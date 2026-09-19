@@ -149,6 +149,21 @@
             overflow: hidden;
         }
 
+        .nav-links.student-links {
+            margin-top: 1rem;
+            padding-top: 0.5rem;
+            border-top: 1px solid var(--glass-border);
+            display: none;
+        }
+
+        body.student-authenticated .nav-links:not(.student-links) {
+            display: none;
+        }
+
+        body.student-authenticated .nav-links.student-links {
+            display: flex;
+        }
+
         .nav-link:hover, .nav-link.active {
             color: var(--accent-1);
             background: rgba(57, 255, 19, 0.1);
@@ -456,6 +471,347 @@
             min-height: 120px;
         }
 
+        .student-dashboard {
+            display: none;
+            max-width: 1200px;
+            padding: 3rem 0 5rem;
+        }
+
+        .enterprise-dashboard {
+            display: none;
+            max-width: 1200px;
+            padding: 3rem 0 5rem;
+        }
+
+        .enterprise-dashboard .dashboard-section {
+            margin-bottom: 2rem;
+        }
+
+        .publish-form {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1rem;
+        }
+
+        .publish-form .form-group:last-of-type,
+        .publish-form .publish-submit {
+            grid-column: 1 / -1;
+        }
+
+        .applicant-list {
+            display: grid;
+            gap: 0.8rem;
+        }
+
+        .applicant-row {
+            display: grid;
+            grid-template-columns: 1.2fr 1.5fr 1.4fr 0.8fr 0.8fr;
+            gap: 1rem;
+            align-items: center;
+            padding: 1rem;
+            background: rgba(1, 11, 18, 0.6);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+        }
+
+        .applicant-row span {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        .company-sidebar-links,
+        body.enterprise-authenticated .student-links {
+            display: none;
+        }
+
+        body.enterprise-authenticated .nav-links:not(.company-sidebar-links) {
+            display: none;
+        }
+
+        body.enterprise-authenticated .company-sidebar-links {
+            display: flex;
+        }
+
+        .student-category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.2rem;
+            margin-top: 1rem;
+        }
+
+        .category-panel {
+            padding: 1.25rem;
+        }
+
+        .match-score {
+            display: inline-flex;
+            background: rgba(57, 255, 19, 0.09);
+            color: var(--accent-1);
+            border: 1px solid var(--glass-border);
+            border-radius: 999px;
+            padding: 0.3rem 0.7rem;
+            font-size: 0.72rem;
+            margin-top: 0.8rem;
+        }
+
+        body.student-authenticated .portal-view {
+            display: none !important;
+        }
+
+        body.enterprise-authenticated .portal-view,
+        body.enterprise-authenticated .student-dashboard {
+            display: none !important;
+        }
+
+        body.student-authenticated .sidebar,
+        body.student-authenticated .mobile-header {
+            display: flex !important;
+        }
+
+        body.enterprise-authenticated .sidebar,
+        body.enterprise-authenticated .mobile-header {
+            display: flex !important;
+        }
+
+        body.student-authenticated .main-content {
+            margin-left: var(--sidebar-width);
+            padding: 0 4rem;
+        }
+
+        body.student-authenticated #student-dashboard {
+            display: block;
+        }
+
+        body.enterprise-authenticated #enterprise-dashboard {
+            display: block;
+        }
+
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .eyebrow {
+            letter-spacing: 0.12rem;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            color: var(--accent-1);
+            margin-bottom: 0.5rem;
+        }
+
+        .dashboard-header h2 {
+            font-size: clamp(2rem, 3vw, 3rem);
+            color: var(--text-main);
+        }
+
+        .search-panel,
+        .dashboard-section {
+            padding: 1.5rem 1.75rem;
+            margin-bottom: 2rem;
+        }
+
+        .search-label {
+            display: block;
+            color: var(--accent-1);
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        .search-input {
+            width: 100%;
+            background: rgba(1, 11, 18, 0.9);
+            border: 1px solid var(--glass-border);
+            color: var(--text-main);
+            padding: 1rem 1.1rem;
+            border-radius: 12px;
+            font-size: 1rem;
+        }
+
+        .dashboard-section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .dashboard-section-header h3 {
+            color: var(--text-main);
+            font-size: 1.45rem;
+        }
+
+        .pill {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(57, 255, 19, 0.08);
+            color: var(--accent-1);
+            padding: 0.45rem 0.8rem;
+            border-radius: 999px;
+            border: 1px solid var(--glass-border);
+            font-size: 0.8rem;
+        }
+
+        .opportunity-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.2rem;
+        }
+
+        .opportunity-card {
+            background: rgba(1, 11, 18, 0.6);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 1.25rem;
+        }
+
+        .opportunity-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.9rem;
+        }
+
+        .type-badge {
+            background: rgba(57, 255, 19, 0.09);
+            color: var(--accent-1);
+            border: 1px solid var(--glass-border);
+            border-radius: 999px;
+            padding: 0.35rem 0.7rem;
+            font-size: 0.76rem;
+        }
+
+        .opportunity-card h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .opportunity-meta {
+            color: var(--text-muted);
+            font-size: 0.82rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .opportunity-card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 0.9rem;
+        }
+
+        .opportunity-link {
+            color: var(--accent-1);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .account-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .upload-box,
+        .account-field,
+        .reference-item {
+            background: rgba(1, 11, 18, 0.6);
+            border: 1px solid var(--glass-border);
+            border-radius: 14px;
+            padding: 1rem;
+        }
+
+        .upload-box h4,
+        .account-field h4 {
+            margin-bottom: 0.75rem;
+            color: var(--text-main);
+        }
+
+        .file-upload {
+            display: none;
+        }
+
+        .file-upload-label,
+        .inline-action {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(57, 255, 19, 0.08);
+            color: var(--accent-1);
+            border: 1px solid var(--glass-border);
+            border-radius: 10px;
+            padding: 0.7rem 1rem;
+            cursor: pointer;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        .file-name {
+            color: var(--text-muted);
+            font-size: 0.82rem;
+        }
+
+        .account-field label {
+            display: block;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .account-field input {
+            width: 100%;
+            background: rgba(1, 11, 18, 0.9);
+            border: 1px solid var(--glass-border);
+            border-radius: 10px;
+            color: var(--text-main);
+            padding: 0.75rem 0.9rem;
+        }
+
+        .reference-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .reference-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .reference-item strong {
+            display: block;
+            margin-bottom: 0.2rem;
+        }
+
+        .reference-item span {
+            color: var(--text-muted);
+            font-size: 0.82rem;
+        }
+
+        .reference-status {
+            color: var(--accent-1);
+            font-size: 0.8rem;
+            margin-top: 0.25rem;
+        }
+
+        .endorse-btn {
+            padding: 0.6rem 0.9rem;
+            border: 1px solid var(--glass-border);
+            background: rgba(57, 255, 19, 0.08);
+            color: var(--accent-1);
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .empty-state {
+            color: var(--text-muted);
+            text-align: center;
+            padding: 1rem;
+        }
+
         .mobile-header {
             display: none;
             position: fixed;
@@ -522,6 +878,11 @@
 
             .mobile-header {
                 display: flex;
+            }
+
+            .publish-form,
+            .applicant-row {
+                grid-template-columns: 1fr;
             }
 
             #home .hero-text {
@@ -600,6 +961,22 @@
             <li><a href="#qa" class="nav-link" data-section="qa">Q&A</a></li>
             <li><a href="#help" class="nav-link" data-section="help">Help</a></li>
         </ul>
+
+        <ul class="nav-links student-links" id="student-sidebar-links">
+            <li><a href="#opportunities" class="nav-link" data-section="opportunities">Opportunities</a></li>
+            <li><a href="#internships" class="nav-link" data-section="internships">Internships</a></li>
+            <li><a href="#hackathons" class="nav-link" data-section="hackathons">Hackathons</a></li>
+            <li><a href="#workshops" class="nav-link" data-section="workshops">Workshops</a></li>
+            <li><a href="#account" class="nav-link" data-section="account">Account</a></li>
+            <li><a href="#knowledge-base" class="nav-link" data-section="knowledge-base">Knowledge Base</a></li>
+            <li><a href="#support-terminal" class="nav-link" data-section="support-terminal">Support Terminal</a></li>
+        </ul>
+        <ul class="nav-links company-sidebar-links" id="company-sidebar-links">
+            <li><a href="#company-overview" class="nav-link active" data-section="company-overview">Overview</a></li>
+            <li><a href="#publish-opportunity" class="nav-link" data-section="publish-opportunity">Publish a Call</a></li>
+            <li><a href="#applicants" class="nav-link" data-section="applicants">Applicants</a></li>
+            <li><a href="#company-settings" class="nav-link" data-section="company-settings">Company Settings</a></li>
+        </ul>
         <div class="sidebar-footer">
             <p>&copy; 2026 Nexus Systems.</p>
             <p class="sidebar-footer-highlight">Secure Portal V3</p>
@@ -608,7 +985,7 @@
 
     <main class="main-content">
         
-        <section id="home">
+        <section id="home" class="portal-view">
             <h1 class="hero-text">
                 Enter the <br>
                 <span class="gradient-text">Next Generation</span><br>
@@ -619,7 +996,179 @@
             </p>
         </section>
 
-        <section id="auth">
+        <section id="student-dashboard" class="student-dashboard">
+            <div class="dashboard-header">
+                <div>
+                    <p class="eyebrow">Student Portal</p>
+                    <h2>Welcome, <span id="student-name">Student</span>!</h2>
+                </div>
+                <button type="button" class="btn btn-primary" id="logout-btn">Log Out</button>
+            </div>
+
+            <div id="opportunities" class="search-panel glass-panel">
+                <label for="opportunity-search" class="search-label">Search opportunities</label>
+                <input id="opportunity-search" class="search-input" type="text" placeholder="Search internships, workshops, hackathons..." />
+            </div>
+
+            <div class="dashboard-section glass-panel">
+                <div class="dashboard-section-header">
+                    <h3>Opportunities</h3>
+                    <span class="pill" id="result-count">0 results</span>
+                </div>
+                <div id="opportunity-list" class="opportunity-list"></div>
+            </div>
+
+            <div id="internships" class="dashboard-section glass-panel">
+                <div class="dashboard-section-header">
+                    <h3>Internships</h3>
+                    <span class="pill">Best matches</span>
+                </div>
+                <div id="internship-list" class="student-category-grid"></div>
+            </div>
+
+            <div id="hackathons" class="dashboard-section glass-panel">
+                <div class="dashboard-section-header">
+                    <h3>Hackathons</h3>
+                    <span class="pill">Recommended</span>
+                </div>
+                <div id="hackathon-list" class="student-category-grid"></div>
+            </div>
+
+            <div id="workshops" class="dashboard-section glass-panel">
+                <div class="dashboard-section-header">
+                    <h3>Workshops</h3>
+                    <span class="pill">Suggested learning</span>
+                </div>
+                <div id="workshop-list" class="student-category-grid"></div>
+            </div>
+
+            <div id="account" class="dashboard-section glass-panel">
+                <div class="dashboard-section-header">
+                    <h3>Account</h3>
+                    <div>
+                        <span class="pill">Documents & endorsements</span>
+                        <button type="button" class="inline-action" id="save-account-btn">Save account</button>
+                    </div>
+                </div>
+
+                <div class="account-grid">
+                    <div class="upload-box">
+                        <h4>CV</h4>
+                        <label class="file-upload-label" for="cv-upload">Upload CV</label>
+                        <input id="cv-upload" class="file-upload" type="file" accept=".pdf,.doc,.docx" />
+                        <div id="cv-name" class="file-name">No CV uploaded yet.</div>
+                    </div>
+
+                    <div class="upload-box">
+                        <h4>Certificates</h4>
+                        <label class="file-upload-label" for="certificate-upload">Upload Certificates</label>
+                        <input id="certificate-upload" class="file-upload" type="file" accept=".pdf,.png,.jpg,.jpeg" multiple />
+                        <div id="certificate-name" class="file-name">No certificates uploaded yet.</div>
+                    </div>
+
+                    <div class="account-field">
+                        <h4>LinkedIn Profile</h4>
+                        <label for="linkedin-profile">LinkedIn URL</label>
+                        <input id="linkedin-profile" type="url" placeholder="https://linkedin.com/in/your-profile" />
+                    </div>
+                </div>
+
+                <div id="account-save-status" class="file-name">Changes save automatically in this browser.</div>
+
+                <div class="reference-list" id="reference-list"></div>
+
+                <div id="account-recommendations" class="dashboard-section">
+                    <div class="dashboard-section-header">
+                        <h3>Your recommendations</h3>
+                        <span class="pill">Updated from your account</span>
+                    </div>
+                    <div class="student-category-grid">
+                        <div>
+                            <h4>Internships</h4>
+                            <div id="account-internship-list" class="student-category-grid"></div>
+                        </div>
+                        <div>
+                            <h4>Workshops</h4>
+                            <div id="account-workshop-list" class="student-category-grid"></div>
+                        </div>
+                        <div>
+                            <h4>Hackathons</h4>
+                            <div id="account-hackathon-list" class="student-category-grid"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="enterprise-dashboard" class="enterprise-dashboard">
+            <div class="dashboard-header" id="company-overview">
+                <div>
+                    <p class="eyebrow">Enterprise Workspace</p>
+                    <h2>Welcome, <span id="company-name">Partner</span></h2>
+                </div>
+                <button type="button" class="btn btn-primary" id="company-logout-btn">Log Out</button>
+            </div>
+
+            <div id="publish-opportunity" class="dashboard-section glass-panel">
+                <div class="dashboard-section-header">
+                    <h3>Publish a call</h3>
+                    <span class="pill">Internships, workshops, hackathons</span>
+                </div>
+                <form id="publish-opportunity-form" class="publish-form">
+                    <div class="form-group">
+                        <label class="form-label" for="publish-type">Call type</label>
+                        <select id="publish-type" class="form-input" required>
+                            <option>Internship</option>
+                            <option>Workshop</option>
+                            <option>Hackathon</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="publish-title">Title</label>
+                        <input id="publish-title" class="form-input" placeholder="e.g. Product Engineering Internship" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="publish-company">Company or host</label>
+                        <input id="publish-company" class="form-input" value="Commit Partner Network" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="publish-location">Location</label>
+                        <input id="publish-location" class="form-input" placeholder="Remote, Hybrid, or In Person" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="publish-deadline">Deadline</label>
+                        <input id="publish-deadline" class="form-input" type="date" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="publish-keywords">Keywords</label>
+                        <input id="publish-keywords" class="form-input" placeholder="python, design, data" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="publish-description">Description</label>
+                        <textarea id="publish-description" class="form-input" placeholder="Describe the call and what participants will do." required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary publish-submit">Publish call</button>
+                </form>
+            </div>
+
+            <div id="applicants" class="dashboard-section glass-panel">
+                <div class="dashboard-section-header">
+                    <h3>Applicants</h3>
+                    <span class="pill" id="applicant-count">0 applicants</span>
+                </div>
+                <div id="applicant-list" class="applicant-list"></div>
+            </div>
+
+            <div id="company-settings" class="dashboard-section glass-panel">
+                <div class="dashboard-section-header">
+                    <h3>Company settings</h3>
+                    <span class="pill">Verified organization</span>
+                </div>
+                <p class="section-subtitle">Organization ID: ORG-COMMIT-2026</p>
+            </div>
+        </section>
+
+        <section id="auth" class="portal-view">
             <div class="section-header">
                 <h2 class="section-title">Identity & Access</h2>
                 <p class="section-subtitle">Select your authorization method to proceed into the secure portal.</p>
@@ -631,16 +1180,8 @@
                     <h3 class="auth-title">Personal Access</h3>
                     <p class="auth-subtitle">Standard user authentication.</p>
                     
-                    <form onsubmit="event.preventDefault(); alert('Authentication simulation initiated.');">
-                        <div class="form-group">
-                            <label class="form-label">Email Address</label>
-                            <input type="email" class="form-input" placeholder="user@domain.com" required>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Password</label>
-                            <input type="password" class="form-input" placeholder="••••••••" required>
-                        </div>
-                        <button type="submit" class="btn btn-primary auth-btn">Sign In</button>
+                    <form id="student-login-form">
+                        <button type="submit" class="btn btn-primary auth-btn">Enter Student Demo</button>
                     </form>
                 </div>
 
@@ -649,22 +1190,14 @@
                     <h3 class="auth-title">Enterprise SSO</h3>
                     <p class="auth-subtitle">For verified corporate networks.</p>
                     
-                    <form onsubmit="event.preventDefault(); alert('SSO handoff initiated.');">
-                        <div class="form-group">
-                            <label class="form-label">Organization ID</label>
-                            <input type="text" class="form-input" placeholder="ORG-XXXXX" required>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Security Token</label>
-                            <input type="password" class="form-input" placeholder="Enter Token" required>
-                        </div>
-                        <button type="submit" class="btn btn-glass auth-btn">Authorize Device</button>
+                    <form id="enterprise-login-form">
+                        <button type="submit" class="btn btn-glass auth-btn">Enter Enterprise Demo</button>
                     </form>
                 </div>
             </div>
         </section>
 
-        <section id="qa">
+        <section id="knowledge-base">
             <div class="section-header">
                 <h2 class="section-title">Knowledge Base</h2>
                 <p class="section-subtitle">Frequently asked inquiries regarding platform security and access.</p>
@@ -703,7 +1236,7 @@
             </div>
         </section>
 
-        <section id="help">
+        <section id="support-terminal">
             <div class="section-header">
                 <h2 class="section-title">Support Terminal</h2>
                 <p class="section-subtitle">Initiate a secure communication channel with our support engineers.</p>
@@ -727,77 +1260,568 @@
                     </div>
                 </div>
 
-                <div class="contact-form glass-panel">
-                    <form onsubmit="event.preventDefault(); alert('Message transmitted to support queue.');">
-                        <div class="form-group">
-                            <label class="form-label">Clearance Level / Name</label>
-                            <input type="text" class="form-input" placeholder="Identify yourself" required>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Transmission Data (Message)</label>
-                            <textarea class="form-input" placeholder="Describe the anomaly..." required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Transmit Message</button>
-                    </form>
-                </div>
+                <div class="contact-form glass-panel"></div>
             </div>
         </section>
     </main>
 
     <script>
-        // Mobile menu toggle functionality
+        const STUDENT_ACCOUNT = {
+            email: 'student@commit.com',
+            password: 'student123',
+            name: 'Aisha'
+        };
+
+        let opportunities = [
+            {
+                type: 'Internship',
+                title: 'Software Engineering Intern',
+                company: 'Astra Labs',
+                location: 'Remote',
+                deadline: 'Oct 15, 2026',
+                description: 'Work on platform features, bug fixes, and product improvements in a fast-moving engineering team.',
+                keywords: ['software', 'engineering', 'javascript', 'python', 'backend', 'frontend', 'api', 'full stack', 'product']
+            },
+            {
+                type: 'Workshop',
+                title: 'AI Product Design Sprint',
+                company: 'Northstar Studio',
+                location: 'Hybrid',
+                deadline: 'Sep 28, 2026',
+                description: 'Learn product thinking, prototype UX flows, and craft AI-powered user experiences in a practical workshop.',
+                keywords: ['design', 'product', 'ai', 'ux', 'prototype', 'workshop', 'wireframes']
+            },
+            {
+                type: 'Hackathon',
+                title: 'Climate Tech Challenge',
+                company: 'GreenGrid',
+                location: 'In Person',
+                deadline: 'Nov 04, 2026',
+                description: 'Build sustainable solutions with a cross-functional team using real-world climate datasets and rapid prototyping.',
+                keywords: ['hackathon', 'climate', 'sustainability', 'ai', 'data', 'prototype', 'innovation']
+            },
+            {
+                type: 'Internship',
+                title: 'Data Analyst Intern',
+                company: 'Pulse Metrics',
+                location: 'Remote',
+                deadline: 'Oct 01, 2026',
+                description: 'Analyze campaigns, prepare dashboards, and generate insights that drive business decisions.',
+                keywords: ['data', 'analytics', 'sql', 'python', 'dashboard', 'statistics', 'research']
+            },
+            {
+                type: 'Workshop',
+                title: 'Cybersecurity Fundamentals Lab',
+                company: 'Signal Forge',
+                location: 'Online',
+                deadline: 'Oct 12, 2026',
+                description: 'Hands-on lab covering secure coding, threat modeling, and defensive design principles.',
+                keywords: ['cybersecurity', 'security', 'network', 'threat modeling', 'workshop', 'ethical hacking']
+            },
+            {
+                type: 'Hackathon',
+                title: 'OpenAI for Good Hackathon',
+                company: 'Civic Forge',
+                location: 'Remote',
+                deadline: 'Oct 25, 2026',
+                description: 'Create AI-powered solutions for communities, public services, and educational access.',
+                keywords: ['ai', 'hackathon', 'ml', 'community', 'innovation', 'python']
+            },
+            {
+                type: 'Internship',
+                title: 'UX Research Intern',
+                company: 'Nova Interface',
+                location: 'Hybrid',
+                deadline: 'Sep 30, 2026',
+                description: 'Research user pain points, validate prototypes, and translate findings into product decisions.',
+                keywords: ['ux', 'research', 'design', 'product', 'user testing', 'interviews']
+            },
+            {
+                type: 'Workshop',
+                title: 'Agile Product Strategy Bootcamp',
+                company: 'LaunchForge',
+                location: 'In Person',
+                deadline: 'Nov 18, 2026',
+                description: 'Build product roadmaps and execution plans through real sprint planning and team alignment exercises.',
+                keywords: ['product', 'strategy', 'agile', 'workshop', 'planning', 'execution']
+            }
+        ];
+
+        let referenceLetters = [
+            { title: 'Recommendation - Dr. Mensah', type: 'Professor', status: 'Verified' },
+            { title: 'Mentorship Letter - Mr. Chen', type: 'Lecturer', status: 'Pending' },
+            { title: 'Academic Endorsement - Prof. Okafor', type: 'Professor', status: 'Verified' }
+        ];
+
+        const demoApplicants = [
+            { name: 'Aisha Mensah', opportunity: 'Software Engineering Intern', email: 'aisha.mensah@example.com', match_score: '92% match', status: 'Reviewing' },
+            { name: 'Daniel Okafor', opportunity: 'Data Analyst Intern', email: 'daniel.okafor@example.com', match_score: '88% match', status: 'Shortlisted' },
+            { name: 'Maya Chen', opportunity: 'AI Product Design Sprint', email: 'maya.chen@example.com', match_score: '84% match', status: 'New' }
+        ];
+
+        let profileFileText = { cv: '', certificates: '' };
+
+        const studentLoginForm = document.getElementById('student-login-form');
+        const enterpriseLoginForm = document.getElementById('enterprise-login-form');
+        const opportunityList = document.getElementById('opportunity-list');
+        const searchInput = document.getElementById('opportunity-search');
+        const referenceList = document.getElementById('reference-list');
+        const logoutBtn = document.getElementById('logout-btn');
+        const companyLogoutBtn = document.getElementById('company-logout-btn');
+        const publishOpportunityForm = document.getElementById('publish-opportunity-form');
+        const applicantList = document.getElementById('applicant-list');
+        const applicantCount = document.getElementById('applicant-count');
+        const studentName = document.getElementById('student-name');
         const menuBtn = document.getElementById('mobile-menu-btn');
         const sidebar = document.getElementById('sidebar');
         const navLinks = document.querySelectorAll('.nav-link');
+        const internshipList = document.getElementById('internship-list');
+        const hackathonList = document.getElementById('hackathon-list');
+        const workshopList = document.getElementById('workshop-list');
+        const accountInternshipList = document.getElementById('account-internship-list');
+        const accountHackathonList = document.getElementById('account-hackathon-list');
+        const accountWorkshopList = document.getElementById('account-workshop-list');
 
-        menuBtn.addEventListener('click', () => {
-            sidebar.classList.toggle('show');
-            menuBtn.classList.toggle('open');
+        function showStudentDashboard(account) {
+            document.body.classList.add('student-authenticated');
+            if (studentName) {
+                studentName.textContent = account.name;
+            }
+            localStorage.setItem('commitStudentAccount', JSON.stringify(account));
+            window.location.hash = '#opportunities';
+        }
+
+        function hideStudentDashboard() {
+            document.body.classList.remove('student-authenticated');
+            localStorage.removeItem('commitStudentAccount');
+            if (document.getElementById('student-email')) {
+                document.getElementById('student-email').value = '';
+            }
+            if (document.getElementById('student-password')) {
+                document.getElementById('student-password').value = '';
+            }
+        }
+
+        function showEnterpriseDashboard(account) {
+            document.body.classList.add('enterprise-authenticated');
+            document.body.classList.remove('student-authenticated');
+            document.getElementById('company-name').textContent = account.name;
+            localStorage.setItem('commitCompanyAccount', JSON.stringify(account));
+            loadApplicants();
+            window.location.hash = '#company-overview';
+        }
+
+        function hideEnterpriseDashboard() {
+            document.body.classList.remove('enterprise-authenticated');
+            localStorage.removeItem('commitCompanyAccount');
+        }
+
+        function saveAccountProfile() {
+            const profile = {
+                cvName: document.getElementById('cv-name')?.textContent || '',
+                certificateName: document.getElementById('certificate-name')?.textContent || '',
+                linkedin: document.getElementById('linkedin-profile')?.value || '',
+                fileText: profileFileText
+            };
+            localStorage.setItem('commitStudentProfile', JSON.stringify(profile));
+            const status = document.getElementById('account-save-status');
+            if (status) status.textContent = `Account saved ${new Date().toLocaleTimeString()}.`;
+            renderOpportunities(searchInput?.value || '');
+        }
+
+        function restoreAccountProfile() {
+            const profile = JSON.parse(localStorage.getItem('commitStudentProfile') || 'null');
+            if (!profile) return;
+            const cvName = document.getElementById('cv-name');
+            const certificateName = document.getElementById('certificate-name');
+            const linkedin = document.getElementById('linkedin-profile');
+            if (cvName && profile.cvName) cvName.textContent = profile.cvName;
+            if (certificateName && profile.certificateName) certificateName.textContent = profile.certificateName;
+            if (linkedin) linkedin.value = profile.linkedin || '';
+            profileFileText = profile.fileText || { cv: '', certificates: '' };
+        }
+
+        function getProfileText() {
+            const cvText = document.getElementById('cv-name')?.textContent || '';
+            const certText = document.getElementById('certificate-name')?.textContent || '';
+            const linkedInText = document.getElementById('linkedin-profile')?.value || '';
+            const importedText = Object.values(profileFileText).join(' ');
+            const rawText = `${cvText} ${certText} ${linkedInText} ${importedText}`.toLowerCase();
+            const cleaned = rawText
+                .replace(/no cv uploaded yet|no certificates uploaded yet|upload cv|upload certificates|linkedin url|https?:\/\/|\.pdf|\.docx|\.doc|\.png|\.jpg|\.jpeg|[()]/g, ' ')
+                .replace(/[^a-z0-9\s]/g, ' ');
+            return cleaned;
+        }
+
+        function getProposedProfileKeywords() {
+            const profileText = getProfileText();
+            if (!profileText.trim()) {
+                return ['software', 'engineering', 'product', 'design', 'data', 'ai', 'cybersecurity', 'python', 'ux', 'research', 'frontend', 'javascript'];
+            }
+
+            return Array.from(new Set(
+                profileText
+                    .split(/\s+/)
+                    .filter((word) => word.length > 2)
+                    .slice(0, 25)
+            ));
+        }
+
+        function getOpportunityMatch(opportunity) {
+            const profileWords = getProposedProfileKeywords();
+            const keywords = (opportunity.keywords || [opportunity.title, opportunity.description])
+                .flatMap((keyword) => typeof keyword === 'string' ? keyword.toLowerCase().split(/\s+/) : []);
+            const normalizedKeywords = Array.from(new Set(keywords.filter((word) => word.length > 2)));
+            const matches = normalizedKeywords.filter((word) => profileWords.includes(word));
+            const score = matches.length
+                ? Math.min(98, Math.max(35, Math.round((matches.length / Math.max(1, normalizedKeywords.length)) * 100)))
+                : 35;
+            return score;
+        }
+
+        function renderCard(opportunity, matchScore = null) {
+            const matchLabel = matchScore !== null ? `<div class="match-score">${matchScore}% match</div>` : '';
+            return `
+                <article class="opportunity-card">
+                    <div class="opportunity-top">
+                        <span class="type-badge">${opportunity.type}</span>
+                        <span class="pill">${opportunity.deadline}</span>
+                    </div>
+                    <h4>${opportunity.title}</h4>
+                    <div class="opportunity-meta">${opportunity.company} • ${opportunity.location}</div>
+                    <p>${opportunity.description}</p>
+                    ${matchLabel}
+                    <a href="#" class="opportunity-link">Apply now</a>
+                </article>
+            `;
+        }
+
+        function renderCategoryList(type, container) {
+            if (!container) return;
+
+            const filtered = opportunities.filter((opportunity) => opportunity.type === type);
+            const ranked = filtered
+                .map((opportunity) => ({ opportunity, score: getOpportunityMatch(opportunity) }))
+                .sort((a, b) => b.score - a.score);
+
+            if (!ranked.length) {
+                container.innerHTML = '<div class="empty-state">No opportunities available in this category.</div>';
+                return;
+            }
+
+            container.innerHTML = ranked.map(({ opportunity, score }) => renderCard(opportunity, score)).join('');
+        }
+
+        function renderAccountRecommendations() {
+            renderCategoryList('Internship', accountInternshipList);
+            renderCategoryList('Workshop', accountWorkshopList);
+            renderCategoryList('Hackathon', accountHackathonList);
+        }
+
+        function renderOpportunities(query = '') {
+            const filtered = opportunities.filter((opportunity) => {
+                const terms = [
+                    opportunity.title,
+                    opportunity.company,
+                    opportunity.location,
+                    opportunity.type,
+                    opportunity.description
+                ].join(' ').toLowerCase();
+                return terms.includes(query.trim().toLowerCase());
+            });
+
+            const resultCount = document.getElementById('result-count');
+            if (resultCount) {
+                resultCount.textContent = `${filtered.length} result${filtered.length === 1 ? '' : 's'}`;
+            }
+
+            if (!opportunityList) return;
+
+            if (!filtered.length) {
+                opportunityList.innerHTML = '<div class="empty-state">No opportunities match your search.</div>';
+                return;
+            }
+
+            opportunityList.innerHTML = filtered.map((opportunity) => renderCard(opportunity, getOpportunityMatch(opportunity))).join('');
+            renderCategoryList('Internship', internshipList);
+            renderCategoryList('Hackathon', hackathonList);
+            renderCategoryList('Workshop', workshopList);
+            renderAccountRecommendations();
+        }
+
+        function renderReferenceLetters() {
+            if (!referenceList) return;
+
+            referenceList.innerHTML = referenceLetters.map((item) => `
+                <div class="reference-item">
+                    <div>
+                        <strong>${item.title}</strong>
+                        <span>${item.type}</span>
+                        <div class="reference-status">Status: ${item.status}</div>
+                    </div>
+                    <button class="endorse-btn" type="button">Endorse</button>
+                </div>
+            `).join('');
+
+            referenceList.querySelectorAll('.endorse-btn').forEach((button) => {
+                    button.addEventListener('click', async () => {
+                        const reference = referenceLetters.find((entry) => entry.title === item.querySelector('strong').textContent);
+                        if (!reference) return;
+                        const response = await fetch(`/api/references/${reference.id}/endorse`, {
+                            method: 'POST',
+                            headers: { 'X-Student-ID': JSON.parse(localStorage.getItem('commitStudentAccount') || '{}').id }
+                        });
+                        if (!response.ok) return;
+                    const item = button.closest('.reference-item');
+                    const status = item.querySelector('.reference-status');
+                    status.textContent = 'Status: Endorsed by Lecturer';
+                    button.textContent = 'Endorsed';
+                    button.disabled = true;
+                    button.style.opacity = '0.7';
+                });
+            });
+        }
+
+        function renderApplicants(applicants) {
+            if (!applicantList) return;
+            applicantCount.textContent = `${applicants.length} applicant${applicants.length === 1 ? '' : 's'}`;
+            applicantList.innerHTML = applicants.length
+                ? applicants.map((applicant) => `
+                    <div class="applicant-row">
+                        <strong>${applicant.name}</strong>
+                        <span>${applicant.opportunity}</span>
+                        <span>${applicant.email}</span>
+                        <span class="match-score">${applicant.match_score}</span>
+                        <span>${applicant.status}</span>
+                    </div>
+                `).join('')
+                : '<div class="empty-state">No applicants yet.</div>';
+        }
+
+        async function loadApplicants() {
+            const company = JSON.parse(localStorage.getItem('commitCompanyAccount') || '{}');
+            try {
+                const response = await fetch('/api/company/applicants', {
+                    headers: { 'X-Organization-ID': company.organizationId || '' }
+                });
+                if (response.ok) {
+                    renderApplicants(await response.json());
+                    return;
+                }
+            } catch (error) {
+                // Use demo records when Commit.html is opened directly.
+            }
+            renderApplicants(JSON.parse(localStorage.getItem('commitDemoApplicants') || 'null') || demoApplicants);
+        }
+
+        function bindFileUpload(inputId, valueId, labelText) {
+            const input = document.getElementById(inputId);
+            const target = document.getElementById(valueId);
+            if (!input || !target) return;
+
+            input.addEventListener('change', async (event) => {
+                const files = Array.from(event.target.files || []);
+                const profileKey = labelText.toLowerCase();
+                target.textContent = files.length
+                    ? `${labelText}: ${files.map((file) => file.name).join(', ')}`
+                    : `No ${labelText.toLowerCase()} uploaded yet.`;
+                profileFileText[profileKey] = (await Promise.all(files.map(async (file) => {
+                    const readable = file.type.startsWith('text/') || /\.(txt|md|csv|json)$/i.test(file.name);
+                    if (!readable) return '';
+                    try {
+                        return await file.text();
+                    } catch (error) {
+                        return '';
+                    }
+                }))).join(' ');
+                saveAccountProfile();
+                if (files.length) {
+                    const formData = new FormData();
+                    formData.append('linkedin', document.getElementById('linkedin-profile')?.value || '');
+                    files.forEach((file) => formData.append(labelText.toLowerCase(), file));
+                    try {
+                        await fetch('/api/profile', {
+                            method: 'POST',
+                            headers: { 'X-Student-ID': JSON.parse(localStorage.getItem('commitStudentAccount') || '{}').id },
+                            body: formData
+                        });
+                    } catch (error) {
+                        // Browser storage remains available in the standalone preview.
+                    }
+                }
+                renderOpportunities(searchInput?.value || '');
+            });
+        }
+
+        studentLoginForm.addEventListener('submit', async (event) => {
+            event.preventDefault();
+            try {
+                const response = await fetch('/api/demo-student-login', { method: 'POST' });
+                if (response.ok) {
+                    showStudentDashboard(await response.json());
+                    return;
+                }
+            } catch (error) {
+                // Continue with the standalone browser demo.
+            }
+            showStudentDashboard({ id: 'demo-student', email: 'student@commit.com', name: 'Aisha' });
         });
 
-        // Close sidebar when clicking a link on mobile
+        enterpriseLoginForm.addEventListener('submit', async (event) => {
+            event.preventDefault();
+            try {
+                const response = await fetch('/api/company/demo-login', { method: 'POST' });
+                if (response.ok) {
+                    showEnterpriseDashboard(await response.json());
+                    return;
+                }
+            } catch (error) {
+                // Continue with the standalone browser demo.
+            }
+            showEnterpriseDashboard({ organizationId: 'ORG-COMMIT-2026', name: 'Commit Partner Network' });
+        });
+
+        logoutBtn.addEventListener('click', () => {
+            hideStudentDashboard();
+            window.location.reload();
+        });
+
+        companyLogoutBtn.addEventListener('click', () => {
+            hideEnterpriseDashboard();
+            window.location.reload();
+        });
+
+        publishOpportunityForm.addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const company = JSON.parse(localStorage.getItem('commitCompanyAccount') || '{}');
+            const payload = {
+                type: document.getElementById('publish-type').value,
+                title: document.getElementById('publish-title').value.trim(),
+                company: document.getElementById('publish-company').value.trim(),
+                location: document.getElementById('publish-location').value.trim(),
+                deadline: document.getElementById('publish-deadline').value,
+                keywords: document.getElementById('publish-keywords').value.trim(),
+                description: document.getElementById('publish-description').value.trim()
+            };
+            try {
+                const response = await fetch('/api/company/opportunities', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-Organization-ID': company.organizationId || ''
+                    },
+                    body: JSON.stringify(payload)
+                });
+                if (response.ok) {
+                    publishOpportunityForm.reset();
+                    document.getElementById('publish-company').value = company.name;
+                    alert('Call published successfully.');
+                    return;
+                }
+            } catch (error) {
+                // Store demo calls in the browser when no server is running.
+            }
+            const localCalls = JSON.parse(localStorage.getItem('commitDemoCalls') || '[]');
+            localCalls.push(payload);
+            localStorage.setItem('commitDemoCalls', JSON.stringify(localCalls));
+            publishOpportunityForm.reset();
+            document.getElementById('publish-company').value = company.name;
+            alert('Call published successfully.');
+        });
+
+        searchInput.addEventListener('input', async (event) => {
+            const response = await fetch(`/api/opportunities?q=${encodeURIComponent(event.target.value)}`);
+            opportunities = await response.json();
+            renderOpportunities();
+        });
+
+        document.getElementById('linkedin-profile')?.addEventListener('input', async () => {
+            saveAccountProfile();
+            const formData = new FormData();
+            formData.append('linkedin', document.getElementById('linkedin-profile').value);
+            try {
+                await fetch('/api/profile', {
+                    method: 'POST',
+                    headers: { 'X-Student-ID': JSON.parse(localStorage.getItem('commitStudentAccount') || '{}').id },
+                    body: formData
+                });
+            } catch (error) {
+                // Browser storage remains available in the standalone preview.
+            }
+            renderOpportunities(searchInput?.value || '');
+        });
+
+        document.getElementById('save-account-btn')?.addEventListener('click', saveAccountProfile);
+
+        bindFileUpload('cv-upload', 'cv-name', 'CV');
+        bindFileUpload('certificate-upload', 'certificate-name', 'Certificates');
+        restoreAccountProfile();
+
+        async function loadDatabaseData() {
+            const [opportunityResponse, referenceResponse] = await Promise.all([
+                fetch('/api/opportunities'),
+                fetch('/api/references')
+            ]);
+            if (opportunityResponse.ok) opportunities = await opportunityResponse.json();
+            if (referenceResponse.ok) referenceLetters = await referenceResponse.json();
+            renderOpportunities(searchInput?.value || '');
+            renderReferenceLetters();
+        }
+
+        const savedAccount = JSON.parse(localStorage.getItem('commitStudentAccount') || 'null');
+        if (savedAccount) {
+            showStudentDashboard(savedAccount);
+        }
+
+        const savedCompany = JSON.parse(localStorage.getItem('commitCompanyAccount') || 'null');
+        if (savedCompany) {
+            showEnterpriseDashboard(savedCompany);
+        }
+
+        renderOpportunities();
+        renderReferenceLetters();
+        loadDatabaseData().catch(() => console.warn('Database API unavailable; using local demo data.'));
+
+        if (menuBtn && sidebar) {
+            menuBtn.addEventListener('click', () => {
+                sidebar.classList.toggle('show');
+                menuBtn.classList.toggle('open');
+            });
+        }
+
         navLinks.forEach(link => {
             link.addEventListener('click', () => {
                 if (window.innerWidth <= 768) {
-                    sidebar.classList.remove('show');
-                    menuBtn.classList.remove('open');
+                    if (sidebar) sidebar.classList.remove('show');
+                    if (menuBtn) menuBtn.classList.remove('open');
                 }
             });
         });
 
-        // Custom Accordion logic for Knowledge Base (Q&A)
         const faqItems = document.querySelectorAll('.faq-item');
         faqItems.forEach(item => {
             item.addEventListener('click', () => {
-                // Close others to keep accordion style clean
                 faqItems.forEach(otherItem => {
                     if (otherItem !== item && otherItem.classList.contains('active')) {
                         otherItem.classList.remove('active');
                     }
                 });
-                // Toggle current item
                 item.classList.toggle('active');
             });
         });
 
-        // Intersection Observer for Active Nav State highlighting
         const sections = document.querySelectorAll('section');
-        
         const observerOptions = {
             root: null,
             rootMargin: '0px',
-            threshold: 0.5 // Trigger when 50% of the section is visible
+            threshold: 0.5
         };
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     const id = entry.target.getAttribute('id');
-                    
-                    // Remove active class from all nav links
                     navLinks.forEach(link => link.classList.remove('active'));
-                    
-                    // Add active class to corresponding nav link
                     const activeLink = document.querySelector(`.nav-link[data-section="${id}"]`);
                     if (activeLink) {
                         activeLink.classList.add('active');
@@ -809,6 +1833,10 @@
         sections.forEach(section => {
             observer.observe(section);
         });
+
+        if (document.body.classList.contains('student-authenticated')) {
+            document.getElementById('student-sidebar-links').style.display = 'flex';
+        }
     </script>
 </body>
 </html>
