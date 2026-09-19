@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus Dark - Portal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #0b0c10;
+            --text-main: #f8f9fa;
+            --text-muted: #a1a1aa;
+            --accent-1: #6366f1; /* Indigo */
+            --accent-2: #ec4899; /* Pink */
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            --sidebar-width: 280px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        .bg-orbs {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            overflow: hidden;
+            background: radial-gradient(circle at 15% 50%, rgba(99, 102, 241, 0.08), transparent 25%),
+                        radial-gradient(circle at 85% 30%, rgba(236, 72, 153, 0.08), transparent 25%);
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.5;
+            animation: float 20s infinite ease-in-out alternate;
+        }
+
+        .orb-1 {
+            background: var(--accent-1);
+            width: 400px;
+            height: 400px;
+            top: -100px;
+            left: -100px;
+        }
+
+        .orb-2 {
+            background: var(--accent-2);
+            width: 500px;
+            height: 500px;
+            bottom: -150px;
+            right: -100px;
+            animation-delay: -5s;
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        .glass-panel {
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            box-shadow: var(--glass-shadow);
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: var(--sidebar-width);
+            height: 100vh;
+            padding: 2.5rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            z-index: 100;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 4rem;
+            text-decoration: none;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+            border-radius: 8px;
+            display: inline-block;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            flex-grow: 1;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            font-weight: 500;
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            display: block;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--text-main);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .nav-link.active::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 10%;
+            height: 80%;
+            width: 4px;
+            background: linear-gradient(to bottom, var(--accent-1), var(--accent-2));
+            border-radius: 0 4px 4px 0;
+        }
+
+        .sidebar-footer {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-align: center;
+        }
+
+        .main-content {
+            margin-left: var(--sidebar-width);
+            padding: 0 4rem;
+            position: relative;
+            transition: margin-left 0.4s ease;
+        }
+
+        section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 6rem 0;
+            position: relative;
+        }
+
+        .section-header {
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, #fff, #a1a1aa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            max-width: 600px;
+        }
+
+        #home .hero-text {
+            font-size: 4.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .gradient-text {
+            background: linear-gradient(to right, var(--accent-1), var(--accent-2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-desc {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 500px;
+            margin-bottom: 3rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+            color: white;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.6);
+        }
+
+        .btn-glass {
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-glass:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .auth-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            max-width: 1000px;
+        }
+
+        .auth-card {
+            padding: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .auth-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+        }
+
+        .card-personal::before { background: var(--accent-1); }
+        .card-corp::before { background: var(--accent-2); }
+
+        .auth-title {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+        }
+
+        .form-input {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--glass-border);
+            color: white;
+            padding: 0.8rem 1rem;
+            border-radius: 10px;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .form-input:focus {
+            border-color: var(--accent-1);
+        }
+
+        .auth-btn {
+            width: 100%;
+            margin-top: 1rem;
+        }
+
+        .qa-container {
+            max-width: 800px;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .faq-item {
+            padding: 1.5rem;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .faq-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 500;
+            font-size: 1.1rem;
+        }
+
+        .faq-icon {
+            width: 24px;
+            height: 24px;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-icon::before, .faq-icon::after {
+            content: '';
+            position: absolute;
+            background: var(--text-main);
+            border-radius: 2px;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-icon::before { top: 11px; left: 4px; width: 16px; height: 2px; }
+        .faq-icon::after { top: 4px; left: 11px; width: 2px; height: 16px; }
+
+        .faq-item.active .faq-icon { transform: rotate(180deg); }
+        .faq-item.active .faq-icon::after { transform: scaleY(0); }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out, margin-top 0.4s ease;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 200px;
+            margin-top: 1rem;
+        }
+
+        .help-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            max-width: 1000px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .info-card {
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .info-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(99, 102, 241, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-1);
+            font-size: 1.2rem;
+        }
+
+        .contact-form {
+            padding: 3rem;
+        }
+
+        textarea.form-input {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .mobile-header {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 70px;
+            background: rgba(11, 12, 16, 0.8);
+            backdrop-filter: blur(16px);
+            z-index: 99;
+            padding: 0 1.5rem;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .menu-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            z-index: 101;
+        }
+
+        .menu-btn span {
+            display: block;
+            width: 25px;
+            height: 2px;
+            background: var(--text-main);
+            transition: 0.3s;
+        }
+
+        @media (max-width: 992px) {
+            .auth-grid, .help-grid {
+                grid-template-columns: 1fr;
+            }
+            .main-content {
+                padding: 0 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+                background: rgba(11, 12, 16, 0.95);
+                backdrop-filter: blur(20px);
+            }
+
+            .sidebar.show {
+                transform: translateX(0);
+            }
+
+            .main-content {
+                margin-left: 0;
+                padding-top: 70px;
+            }
+
+            .mobile-header {
+                display: flex;
+            }
+
+            #home .hero-text {
+                font-size: 3rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+            }
+            
+            .menu-btn.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+            .menu-btn.open span:nth-child(2) { opacity: 0; }
+            .menu-btn.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-orbs">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+    </div>
+
+    <div class="mobile-header">
+        <a href="#home" class="logo" style="margin-bottom: 0;">
+            <div class="logo-icon"></div>
+            Commit
+        </a>
+        <button class="menu-btn" id="mobile-menu-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+
+    <nav class="sidebar glass-panel" id="sidebar">
+        <a href="#home" class="logo">
+            <div class="logo-icon"></div>
+            Nexus Dark
+        </a>
+        <ul class="nav-links">
+            <li><a href="#home" class="nav-link active" data-section="home">Home</a></li>
+            <li><a href="#auth" class="nav-link" data-section="auth">Sign In / Login</a></li>
+            <li><a href="#qa" class="nav-link" data-section="qa">Q&A</a></li>
+            <li><a href="#help" class="nav-link" data-section="help">Help</a></li>
+        </ul>
+        <div class="sidebar-footer">
+            <p>&copy; 2026 Nexus Systems.</p>
+            <p>Secure Portal V2</p>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        
+        <section id="home">
+            <h1 class="hero-text">
+                Enter the <br>
+                <span class="gradient-text">Next Generation</span><br>
+                Workspace.
+            </h1>
+            <p class="hero-desc">
+                Experience a secure, seamless, and stunning environment to manage your enterprise assets and connect with your team.
+            </p>
+            <div class="hero-buttons">
+                <a href="#auth" class="btn btn-primary">Authenticate Now</a>
+                <a href="#help" class="btn btn-glass">Explore Documentation</a>
+            </div>
+        </section>
+
+        <section id="auth">
+            <div class="section-header">
+                <h2 class="section-title">Identity & Access</h2>
+                <p class="section-subtitle">Select your authorization method to proceed into the secure portal.</p>
+            </div>
+
+            <div class="auth-grid">
+                <!-- Standard Sign In -->
+                <div class="auth-card glass-panel card-personal">
+                    <h3 class="auth-title">Personal Access</h3>
+                    <p class="text-muted" style="margin-bottom: 2rem; font-size: 0.9rem;">Standard user authentication.</p>
+                    
+                    <form onsubmit="event.preventDefault(); alert('Authentication simulation initiated.');">
+                        <div class="form-group">
+                            <label class="form-label">Email Address</label>
+                            <input type="email" class="form-input" placeholder="user@domain.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Password</label>
+                            <input type="password" class="form-input" placeholder="••••••••" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary auth-btn">Sign In</button>
+                    </form>
+                </div>
+
+                <!-- Corporate Login -->
+                <div class="auth-card glass-panel card-corp">
+                    <h3 class="auth-title">Enterprise SSO</h3>
+                    <p class="text-muted" style="margin-bottom: 2rem; font-size: 0.9rem;">For verified corporate networks.</p>
+                    
+                    <form onsubmit="event.preventDefault(); alert('SSO handoff initiated.');">
+                        <div class="form-group">
+                            <label class="form-label">Organization ID</label>
+                            <input type="text" class="form-input" placeholder="ORG-XXXXX" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Security Token</label>
+                            <input type="password" class="form-input" placeholder="Enter Token" required>
+                        </div>
+                        <button type="submit" class="btn btn-glass auth-btn" style="border: 1px solid var(--accent-2);">Authorize Device</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <section id="qa">
+            <div class="section-header">
+                <h2 class="section-title">Knowledge Base</h2>
+                <p class="section-subtitle">Frequently asked inquiries regarding platform security and access.</p>
+            </div>
+
+            <div class="qa-container">
+                <div class="faq-item glass-panel">
+                    <div class="faq-question">
+                        <span>How is my biometric data encrypted?</span>
+                        <div class="faq-icon"></div>
+                    </div>
+                    <div class="faq-answer">
+                        We utilize AES-256 military-grade encryption for all stored data. Biometric tokens are hashed client-side and never leave your device in their raw format, ensuring zero-knowledge architecture.
+                    </div>
+                </div>
+
+                <div class="faq-item glass-panel">
+                    <div class="faq-question">
+                        <span>Can I access the portal from unregistered networks?</span>
+                        <div class="faq-icon"></div>
+                    </div>
+                    <div class="faq-answer">
+                        By default, external network access is blocked for Enterprise accounts unless explicitly permitted by your IT administrator through VPN tunneling or verified IP whitelisting.
+                    </div>
+                </div>
+
+                <div class="faq-item glass-panel">
+                    <div class="faq-question">
+                        <span>What happens if I lose my Security Token?</span>
+                        <div class="faq-icon"></div>
+                    </div>
+                    <div class="faq-answer">
+                        You must immediately contact your IT desk to revoke the active token. A hardware replacement or temporary software authenticator will be issued upon identity verification.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="help">
+            <div class="section-header">
+                <h2 class="section-title">Support Terminal</h2>
+                <p class="section-subtitle">Initiate a secure communication channel with our support engineers.</p>
+            </div>
+
+            <div class="help-grid">
+                <div class="contact-info">
+                    <div class="info-card glass-panel">
+                        <div class="info-icon">✉</div>
+                        <div>
+                            <h4 style="margin-bottom: 0.2rem;">Direct Email</h4>
+                            <p style="color: var(--text-muted); font-size: 0.9rem;">sysadmin@nexus.local</p>
+                        </div>
+                    </div>
+                    <div class="info-card glass-panel">
+                        <div class="info-icon" style="color: var(--accent-2); background: rgba(236, 72, 153, 0.1);">☏</div>
+                        <div>
+                            <h4 style="margin-bottom: 0.2rem;">Secure Line</h4>
+                            <p style="color: var(--text-muted); font-size: 0.9rem;">+1 (800) 555-0199</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form glass-panel">
+                    <form onsubmit="event.preventDefault(); alert('Message transmitted to support queue.');">
+                        <div class="form-group">
+                            <label class="form-label">Clearance Level / Name</label>
+                            <input type="text" class="form-input" placeholder="Identify yourself" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Transmission Data (Message)</label>
+                            <textarea class="form-input" placeholder="Describe the anomaly..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Transmit Message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Mobile menu toggle
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const sidebar = document.getElementById('sidebar');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        menuBtn.addEventListener('click', () => {
+            sidebar.classList.toggle('show');
+            menuBtn.classList.toggle('open');
+        });
+
+        // Close sidebar when clicking a link on mobile
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    sidebar.classList.remove('show');
+                    menuBtn.classList.remove('open');
+                }
+            });
+        });
+
+        // Custom Accordion logic for Q&A
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            item.addEventListener('click', () => {
+                // Close others
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item && otherItem.classList.contains('active')) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+                // Toggle current
+                item.classList.toggle('active');
+            });
+        });
+
+        // Intersection Observer for Active Nav State on scroll
+        const sections = document.querySelectorAll('section');
+        
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.5 // trigger when 50% of the section is visible
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.getAttribute('id');
+                    
+                    // Remove active class from all links
+                    navLinks.forEach(link => link.classList.remove('active'));
+                    
+                    // Add active class to corresponding link
+                    const activeLink = document.querySelector(`.nav-link[data-section="${id}"]`);
+                    if (activeLink) {
+                        activeLink.classList.add('active');
+                    }
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
