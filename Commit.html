@@ -3,21 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nexus Dark - Portal</title>
+    <title>Commit - Portal</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --bg-color: #0b0c10;
-            --text-main: #f8f9fa;
+            /* Black and Neon Green Palette */
+            --bg-color: #010B12;
+            --secondary-bg: #1E1F21;
+            --accent-1: #39FF13;
+            --accent-2: #9CFF00;
+            --accent-3: #2BC20E;
+            --accent-4: #0C8900;
+            
+            --text-main: #ffffff;
             --text-muted: #a1a1aa;
-            --accent-1: #6366f1; /* Indigo */
-            --accent-2: #ec4899; /* Pink */
-            --glass-bg: rgba(255, 255, 255, 0.03);
-            --glass-border: rgba(255, 255, 255, 0.08);
-            --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            
+            /* Glassmorphism Settings */
+            --glass-bg: rgba(30, 31, 33, 0.65);
+            --glass-border: rgba(43, 194, 14, 0.3);
+            --glass-shadow: 0 8px 32px 0 rgba(12, 137, 0, 0.3);
+            
             --sidebar-width: 280px;
         }
 
@@ -30,6 +38,7 @@
 
         html {
             scroll-behavior: smooth;
+            scroll-padding-top: 70px; /* Offset for mobile fixed header */
         }
 
         body {
@@ -47,15 +56,15 @@
             height: 100vh;
             z-index: -1;
             overflow: hidden;
-            background: radial-gradient(circle at 15% 50%, rgba(99, 102, 241, 0.08), transparent 25%),
-                        radial-gradient(circle at 85% 30%, rgba(236, 72, 153, 0.08), transparent 25%);
+            background: radial-gradient(circle at 15% 50%, rgba(57, 255, 19, 0.05), transparent 25%),
+                        radial-gradient(circle at 85% 30%, rgba(156, 255, 0, 0.05), transparent 25%);
         }
 
         .orb {
             position: absolute;
             border-radius: 50%;
             filter: blur(120px);
-            opacity: 0.5;
+            opacity: 0.4;
             animation: float 20s infinite ease-in-out alternate;
         }
 
@@ -101,24 +110,21 @@
             flex-direction: column;
             z-index: 100;
             transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            border-right: 1px solid var(--glass-border);
         }
 
         .logo {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             font-weight: 700;
             margin-bottom: 4rem;
             text-decoration: none;
             color: var(--text-main);
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
         }
 
-        .logo-icon {
-            width: 32px;
-            height: 32px;
-            background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
-            border-radius: 8px;
+        .logo-svg {
             display: inline-block;
         }
 
@@ -144,8 +150,8 @@
         }
 
         .nav-link:hover, .nav-link.active {
-            color: var(--text-main);
-            background: rgba(255, 255, 255, 0.05);
+            color: var(--accent-1);
+            background: rgba(57, 255, 19, 0.1);
         }
 
         .nav-link.active::before {
@@ -161,8 +167,13 @@
 
         .sidebar-footer {
             font-size: 0.85rem;
-            color: var(--text-muted);
+            color: var(--accent-3);
             text-align: center;
+        }
+        
+        .sidebar-footer-highlight {
+            color: var(--accent-1);
+            margin-top: 5px;
         }
 
         .main-content {
@@ -189,8 +200,9 @@
             font-size: 2.5rem;
             font-weight: 600;
             margin-bottom: 1rem;
-            background: linear-gradient(to right, #fff, #a1a1aa);
+            background: linear-gradient(to right, #ffffff, var(--accent-1));
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
@@ -210,6 +222,7 @@
         .gradient-text {
             background: linear-gradient(to right, var(--accent-1), var(--accent-2));
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
@@ -223,7 +236,7 @@
         .btn {
             display: inline-block;
             padding: 1rem 2.5rem;
-            border-radius: 50px;
+            border-radius: 8px;
             font-weight: 600;
             font-size: 1rem;
             text-decoration: none;
@@ -234,29 +247,24 @@
 
         .btn-primary {
             background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
-            color: white;
-            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+            color: var(--bg-color);
+            box-shadow: 0 4px 15px rgba(57, 255, 19, 0.3);
         }
 
         .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.6);
+            box-shadow: 0 6px 20px rgba(156, 255, 0, 0.5);
         }
 
         .btn-glass {
-            background: rgba(255, 255, 255, 0.05);
-            color: white;
-            border: 1px solid var(--glass-border);
+            background: rgba(30, 31, 33, 0.4);
+            color: var(--accent-1);
+            border: 1px solid var(--accent-3);
             backdrop-filter: blur(10px);
         }
 
         .btn-glass:hover {
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 1.5rem;
+            background: rgba(57, 255, 19, 0.1);
         }
 
         .auth-grid {
@@ -287,6 +295,13 @@
         .auth-title {
             font-size: 1.5rem;
             margin-bottom: 0.5rem;
+            color: var(--text-main);
+        }
+        
+        .auth-subtitle {
+            margin-bottom: 2rem;
+            font-size: 0.9rem;
+            color: var(--text-muted);
         }
 
         .form-group {
@@ -302,18 +317,19 @@
 
         .form-input {
             width: 100%;
-            background: rgba(0, 0, 0, 0.2);
-            border: 1px solid var(--glass-border);
+            background: var(--bg-color);
+            border: 1px solid var(--accent-4);
             color: white;
             padding: 0.8rem 1rem;
-            border-radius: 10px;
+            border-radius: 8px;
             font-size: 1rem;
             outline: none;
-            transition: border-color 0.3s;
+            transition: border-color 0.3s, box-shadow 0.3s;
         }
 
         .form-input:focus {
             border-color: var(--accent-1);
+            box-shadow: 0 0 8px rgba(57, 255, 19, 0.4);
         }
 
         .auth-btn {
@@ -331,11 +347,12 @@
         .faq-item {
             padding: 1.5rem;
             cursor: pointer;
-            transition: background 0.3s ease;
+            transition: background 0.3s ease, border-color 0.3s ease;
         }
 
         .faq-item:hover {
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(43, 194, 14, 0.05);
+            border-color: var(--accent-3);
         }
 
         .faq-question {
@@ -344,6 +361,7 @@
             align-items: center;
             font-weight: 500;
             font-size: 1.1rem;
+            color: var(--accent-1);
         }
 
         .faq-icon {
@@ -356,7 +374,7 @@
         .faq-icon::before, .faq-icon::after {
             content: '';
             position: absolute;
-            background: var(--text-main);
+            background: var(--accent-2);
             border-radius: 2px;
             transition: transform 0.3s ease;
         }
@@ -403,13 +421,30 @@
         .info-icon {
             width: 48px;
             height: 48px;
-            background: rgba(99, 102, 241, 0.1);
+            background: rgba(57, 255, 19, 0.1);
             border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: var(--accent-1);
             font-size: 1.2rem;
+            border: 1px solid var(--accent-4);
+        }
+        
+        .info-icon-secondary {
+            color: var(--accent-2);
+            border-color: var(--accent-2);
+            background: rgba(156, 255, 0, 0.1);
+        }
+
+        .info-header {
+            margin-bottom: 0.2rem;
+            color: var(--text-main);
+        }
+        
+        .info-text {
+            color: var(--text-muted);
+            font-size: 0.9rem;
         }
 
         .contact-form {
@@ -428,13 +463,18 @@
             left: 0;
             width: 100%;
             height: 70px;
-            background: rgba(11, 12, 16, 0.8);
+            background: rgba(1, 11, 18, 0.85);
             backdrop-filter: blur(16px);
             z-index: 99;
             padding: 0 1.5rem;
             align-items: center;
             justify-content: space-between;
             border-bottom: 1px solid var(--glass-border);
+        }
+        
+        .mobile-logo-link {
+            margin-bottom: 0;
+            font-size: 1.2rem;
         }
 
         .menu-btn {
@@ -451,7 +491,7 @@
             display: block;
             width: 25px;
             height: 2px;
-            background: var(--text-main);
+            background: var(--accent-1);
             transition: 0.3s;
         }
 
@@ -467,7 +507,7 @@
         @media (max-width: 768px) {
             .sidebar {
                 transform: translateX(-100%);
-                background: rgba(11, 12, 16, 0.95);
+                background: rgba(30, 31, 33, 0.95);
                 backdrop-filter: blur(20px);
             }
 
@@ -488,10 +528,6 @@
                 font-size: 3rem;
             }
             
-            .hero-buttons {
-                flex-direction: column;
-            }
-            
             .menu-btn.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
             .menu-btn.open span:nth-child(2) { opacity: 0; }
             .menu-btn.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
@@ -506,11 +542,29 @@
     </div>
 
     <div class="mobile-header">
-        <a href="#home" class="logo" style="margin-bottom: 0;">
-            <div class="logo-icon"></div>
+        <a href="#home" class="logo mobile-logo-link">
+            <!-- Custom Branch-Briefcase Logo SVG (Mobile) -->
+            <svg class="logo-svg" viewBox="0 0 100 100" width="32" height="32" xmlns="http://www.w3.org/2000/svg">
+                <!-- Git Branch Structure -->
+                <circle cx="20" cy="20" r="14" fill="#010B12" stroke="#39FF13" stroke-width="4"/>
+                <circle cx="20" cy="80" r="14" fill="#010B12" stroke="#39FF13" stroke-width="4"/>
+                <line x1="20" y1="34" x2="20" y2="66" stroke="#39FF13" stroke-width="10" stroke-linecap="round"/>
+                <!-- Curved Hook -->
+                <path d="M 20 50 L 50 50 C 60 50 70 45 75 35 L 65 45" fill="none" stroke="#39FF13" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+                <!-- Briefcase connection ring -->
+                <circle cx="62" cy="53" r="6" fill="none" stroke="#9CFF00" stroke-width="3"/>
+                <!-- Briefcase Body -->
+                <rect x="42" y="59" width="40" height="26" rx="4" fill="#1E1F21" stroke="#39FF13" stroke-width="3"/>
+                <!-- Briefcase Straps -->
+                <line x1="52" y1="59" x2="52" y2="85" stroke="#9CFF00" stroke-width="2"/>
+                <line x1="72" y1="59" x2="72" y2="85" stroke="#9CFF00" stroke-width="2"/>
+                <!-- Buckles -->
+                <rect x="50" y="72" width="4" height="4" fill="#010B12" stroke="#39FF13" stroke-width="1"/>
+                <rect x="70" y="72" width="4" height="4" fill="#010B12" stroke="#39FF13" stroke-width="1"/>
+            </svg>
             Commit
         </a>
-        <button class="menu-btn" id="mobile-menu-btn">
+        <button class="menu-btn" id="mobile-menu-btn" aria-label="Toggle Menu">
             <span></span>
             <span></span>
             <span></span>
@@ -519,8 +573,26 @@
 
     <nav class="sidebar glass-panel" id="sidebar">
         <a href="#home" class="logo">
-            <div class="logo-icon"></div>
-            Nexus Dark
+            <!-- Custom Branch-Briefcase Logo SVG (Desktop) -->
+            <svg class="logo-svg" viewBox="0 0 100 100" width="40" height="40" xmlns="http://www.w3.org/2000/svg">
+                <!-- Git Branch Structure -->
+                <circle cx="20" cy="20" r="14" fill="#010B12" stroke="#39FF13" stroke-width="4"/>
+                <circle cx="20" cy="80" r="14" fill="#010B12" stroke="#39FF13" stroke-width="4"/>
+                <line x1="20" y1="34" x2="20" y2="66" stroke="#39FF13" stroke-width="10" stroke-linecap="round"/>
+                <!-- Curved Hook -->
+                <path d="M 20 50 L 50 50 C 60 50 70 45 75 35 L 65 45" fill="none" stroke="#39FF13" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+                <!-- Briefcase connection ring -->
+                <circle cx="62" cy="53" r="6" fill="none" stroke="#9CFF00" stroke-width="3"/>
+                <!-- Briefcase Body -->
+                <rect x="42" y="59" width="40" height="26" rx="4" fill="#1E1F21" stroke="#39FF13" stroke-width="3"/>
+                <!-- Briefcase Straps -->
+                <line x1="52" y1="59" x2="52" y2="85" stroke="#9CFF00" stroke-width="2"/>
+                <line x1="72" y1="59" x2="72" y2="85" stroke="#9CFF00" stroke-width="2"/>
+                <!-- Buckles -->
+                <rect x="50" y="72" width="4" height="4" fill="#010B12" stroke="#39FF13" stroke-width="1"/>
+                <rect x="70" y="72" width="4" height="4" fill="#010B12" stroke="#39FF13" stroke-width="1"/>
+            </svg>
+            Commit
         </a>
         <ul class="nav-links">
             <li><a href="#home" class="nav-link active" data-section="home">Home</a></li>
@@ -530,7 +602,7 @@
         </ul>
         <div class="sidebar-footer">
             <p>&copy; 2026 Nexus Systems.</p>
-            <p>Secure Portal V2</p>
+            <p class="sidebar-footer-highlight">Secure Portal V3</p>
         </div>
     </nav>
 
@@ -543,12 +615,8 @@
                 Workspace.
             </h1>
             <p class="hero-desc">
-                Experience a secure, seamless, and stunning environment to manage your enterprise assets and connect with your team.
+                Experience a secure, seamless, and high-performance environment to manage your enterprise assets and connect with your team across the terminal.
             </p>
-            <div class="hero-buttons">
-                <a href="#auth" class="btn btn-primary">Authenticate Now</a>
-                <a href="#help" class="btn btn-glass">Explore Documentation</a>
-            </div>
         </section>
 
         <section id="auth">
@@ -561,7 +629,7 @@
                 <!-- Standard Sign In -->
                 <div class="auth-card glass-panel card-personal">
                     <h3 class="auth-title">Personal Access</h3>
-                    <p class="text-muted" style="margin-bottom: 2rem; font-size: 0.9rem;">Standard user authentication.</p>
+                    <p class="auth-subtitle">Standard user authentication.</p>
                     
                     <form onsubmit="event.preventDefault(); alert('Authentication simulation initiated.');">
                         <div class="form-group">
@@ -579,7 +647,7 @@
                 <!-- Corporate Login -->
                 <div class="auth-card glass-panel card-corp">
                     <h3 class="auth-title">Enterprise SSO</h3>
-                    <p class="text-muted" style="margin-bottom: 2rem; font-size: 0.9rem;">For verified corporate networks.</p>
+                    <p class="auth-subtitle">For verified corporate networks.</p>
                     
                     <form onsubmit="event.preventDefault(); alert('SSO handoff initiated.');">
                         <div class="form-group">
@@ -590,7 +658,7 @@
                             <label class="form-label">Security Token</label>
                             <input type="password" class="form-input" placeholder="Enter Token" required>
                         </div>
-                        <button type="submit" class="btn btn-glass auth-btn" style="border: 1px solid var(--accent-2);">Authorize Device</button>
+                        <button type="submit" class="btn btn-glass auth-btn">Authorize Device</button>
                     </form>
                 </div>
             </div>
@@ -646,15 +714,15 @@
                     <div class="info-card glass-panel">
                         <div class="info-icon">✉</div>
                         <div>
-                            <h4 style="margin-bottom: 0.2rem;">Direct Email</h4>
-                            <p style="color: var(--text-muted); font-size: 0.9rem;">sysadmin@nexus.local</p>
+                            <h4 class="info-header">Direct Email</h4>
+                            <p class="info-text">sysadmin@nexus.local</p>
                         </div>
                     </div>
                     <div class="info-card glass-panel">
-                        <div class="info-icon" style="color: var(--accent-2); background: rgba(236, 72, 153, 0.1);">☏</div>
+                        <div class="info-icon info-icon-secondary">☏</div>
                         <div>
-                            <h4 style="margin-bottom: 0.2rem;">Secure Line</h4>
-                            <p style="color: var(--text-muted); font-size: 0.9rem;">+1 (800) 555-0199</p>
+                            <h4 class="info-header">Secure Line</h4>
+                            <p class="info-text">+1 (800) 555-0199</p>
                         </div>
                     </div>
                 </div>
@@ -677,7 +745,7 @@
     </main>
 
     <script>
-        // Mobile menu toggle
+        // Mobile menu toggle functionality
         const menuBtn = document.getElementById('mobile-menu-btn');
         const sidebar = document.getElementById('sidebar');
         const navLinks = document.querySelectorAll('.nav-link');
@@ -697,28 +765,28 @@
             });
         });
 
-        // Custom Accordion logic for Q&A
+        // Custom Accordion logic for Knowledge Base (Q&A)
         const faqItems = document.querySelectorAll('.faq-item');
         faqItems.forEach(item => {
             item.addEventListener('click', () => {
-                // Close others
+                // Close others to keep accordion style clean
                 faqItems.forEach(otherItem => {
                     if (otherItem !== item && otherItem.classList.contains('active')) {
                         otherItem.classList.remove('active');
                     }
                 });
-                // Toggle current
+                // Toggle current item
                 item.classList.toggle('active');
             });
         });
 
-        // Intersection Observer for Active Nav State on scroll
+        // Intersection Observer for Active Nav State highlighting
         const sections = document.querySelectorAll('section');
         
         const observerOptions = {
             root: null,
             rootMargin: '0px',
-            threshold: 0.5 // trigger when 50% of the section is visible
+            threshold: 0.5 // Trigger when 50% of the section is visible
         };
 
         const observer = new IntersectionObserver((entries) => {
@@ -726,10 +794,10 @@
                 if (entry.isIntersecting) {
                     const id = entry.target.getAttribute('id');
                     
-                    // Remove active class from all links
+                    // Remove active class from all nav links
                     navLinks.forEach(link => link.classList.remove('active'));
                     
-                    // Add active class to corresponding link
+                    // Add active class to corresponding nav link
                     const activeLink = document.querySelector(`.nav-link[data-section="${id}"]`);
                     if (activeLink) {
                         activeLink.classList.add('active');
